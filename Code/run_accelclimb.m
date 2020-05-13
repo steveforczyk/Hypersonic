@@ -1,0 +1,22 @@
+% Copyright Ashish Tewari (c) 2006
+global dtr; dtr = pi/180;
+global mu; mu = 3.986004e14;  
+global omega; omega = 2*pi/(23*3600+56*60+4.0905); 
+global S; S =  56.5;  
+global c; c=3.9926; 
+global rm; rm = 6378140 ;  
+global b; b=14.1512; 
+global CLmax; CLmax=1.5;
+global sweep; sweep=50*pi/180; 
+global f8; f8 = fopen('data8.mat', 'a');
+long =70*dtr;       
+lat = 20*dtr;       
+radint=rm+200;     
+velint=69;         
+fpaint=40*dtr;     
+chiint=270*dtr;    
+m=17350;           
+options=odeset('RelTol',1e-4);
+init = [long; lat; radint; velint; fpaint; chiint; m]; 
+[t, o] = ode45('accelclimb',[0, 80], init,options);
+fclose('all');

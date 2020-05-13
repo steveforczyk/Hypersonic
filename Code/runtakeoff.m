@@ -1,0 +1,25 @@
+% Copyright Ashish Tewari (c) 2006
+global dtr; dtr = pi/180;
+global mu; mu = 3.986004e14; 
+global omega; omega=2*pi/(23*3600+56*60+4.0905); 
+global S; S =  223.0815;  
+global c; c=5.42; 
+global rm; rm = 6378140 ; 
+global CD0; CD0=0.02;
+global K; K=0.055;
+global b; b=41.2; 
+global CLmax; CLmax=1.6;
+global CLG; CLG=0.1; 
+global fT0; fT0=211128.17; 
+global tsfc0; tsfc0=0.4; 
+global mur; mur=0.03; 
+long = 0*dtr;       
+lat = 51.45*dtr;    
+rad=rm+3;          
+vel=0.001;         
+fpa=0;             
+chi=270*dtr;       
+m=84890.909;       
+init = [long; lat; rad; vel; fpa; chi; m]; 
+[t, o] = ode45('takeoff',[0, 60], init);
+fclose('all');

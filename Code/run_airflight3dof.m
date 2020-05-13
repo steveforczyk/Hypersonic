@@ -1,0 +1,25 @@
+% Copyright Ashish Tewari (c) 2006
+global dtr; dtr=pi/180; 
+global S; S=223.0815; 
+global c; c=5.42; 
+global rm; rm=6378140; 
+global omega; omega=2*pi/(23*3600+56*60+4.0905); 
+global CD0; CD0=0.015; 
+global K; K=0.08; 
+global qmax; qmax=17200; 
+global Mmax; Mmax=0.985; 
+global CL; CL=0.2783; 
+global fT0; fT0=63131.63; 
+global tsfc0; tsfc0=0.54907; 
+global mfinal; mfinal=84890.909-21222.66; 
+global f8;f8=fopen('data8.mat','a');
+long = 0*dtr;         
+lat = 51.5*dtr;       
+rad=rm+11000;        
+vel=270;             
+fpa=0;               
+chi=287.2*dtr;       
+m=84890.909;         
+init = [long; lat; rad; vel; fpa; chi; m]; 
+[t, o] = ode45('airflight3dof',[0, 5.73*3600], init);
+fclose('all');
